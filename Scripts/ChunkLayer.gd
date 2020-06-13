@@ -20,9 +20,24 @@ func _init(filepath: String):
 	var palette = [] #TileData Array
 	var map_front: Dictionary = Dictionary() # <Vector2, int> key : (posX, posY) -> ID_palette
 	var map_back: Dictionary = Dictionary() # <Vector2, int> key : (posX, posY) -> ID_palette
+
+
+func saveTile(pos: Vector2, tile: Tile):
+	var chunk_pos: Vector2 = VectorUtil.modulo(pos, chunk_size)
+	if (chunks.has(chunk_pos)):
+		chunks[chunk_pos] = Chunk(chunk_size, chunk_pos, mapGenerator, [], Dictionnary(), Dictionnary())
+	chunks[chunk_pos].saveTiles(tile, pos)
+
+func getChunk(pos: Vector2):
+	if (not chunks.has(pos)):
+		return Chunk(chunk_size, pos, MapGenerator)
+	return chunks[pos]
+
+func getTile(pos: Vector2):
+	var chunk_pos: Vector2 = Vector2(pos.x / chunk_size, pos.y / chunk_size).round()
 	
+	if (notchunks.has(chunk_pos)):
+		chunks.add(chunk_pos,
+		Chunk(chunk_size, chunk_pos, mapGenerator, [], Dictionary(), Dictionary())) #new List<TileData>(), new Dictionary<Vector2, int>(),new Dictionary<Vector2, int>()
 	
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	return chunks[chunk_pos].getTile(VectorUtil.modulo(pos, chunk_size), 0)

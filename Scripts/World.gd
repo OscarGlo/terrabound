@@ -45,7 +45,7 @@ func loadChunks():
 			#Console.WriteLine(x + " |" + y)
 
 			front_layer.UpdateChunks(chunks.ToArray(), ChunkLayer, 0);
-            #back_layer.UpdateChunks(chunks.ToArray(), chunkLayer, 1);
+            #backLayer.UpdateChunks(chunks.ToArray(), chunkLayer, 1);
 	pass
 
 func saveTiles(chunckPos: Vector2 , tiles: Dictionary): #*<Vector2, Tile>*#
