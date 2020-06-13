@@ -9,19 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Generator",
 "class": "ChunkLayer",
 "language": "GDScript",
 "path": "res://Scripts/ChunkLayer.gd"
 }, {
 "base": "Node",
+"class": "Generator",
+"language": "GDScript",
+"path": "res://Scripts/Generator.gd"
+}, {
+"base": "Node",
 "class": "Layer",
 "language": "GDScript",
 "path": "res://Scripts/Layer.gd"
+}, {
+"base": "Reference",
+"class": "MapGenerator",
+"language": "GDScript",
+"path": "res://Scripts/MapGenerator.gd"
+}, {
+"base": "Reference",
+"class": "VectorUtil",
+"language": "GDScript",
+"path": "res://Scripts/VectorUtil.gd"
 } ]
 _global_script_class_icons={
 "ChunkLayer": "",
-"Layer": ""
+"Generator": "",
+"Layer": "",
+"MapGenerator": "",
+"VectorUtil": ""
 }
 
 [application]
